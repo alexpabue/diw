@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formularios</title>
+</head>
+<!-- Migas de pan -->
+<div class="row">
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li> Inicio <span class="divider"></span> </li>
+            <li class="active"> Formularios </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <form class="form-horizontal" role="form">
+            <fieldset>
+                <legend>Formulario</legend>
+                <div id="nombreGroup" class="form-group">
+                    <label id="nombreLabel" class="col-sm-2 control-label" for="textinput">Nombre</label>
+                    <div class="col-sm-10">
+                        <input id="nombre" type="text" placeholder="Nombre" class="form-control"> </div>
+                </div>
+                <div id="apellidosGroup" class="form-group">
+                    <label id="apellidosLabel" class="col-sm-2 control-label" for="textinput">Apellidos</label>
+                    <div class="col-sm-10">
+                        <input id="apellidos" type="text" placeholder="Apellidos" class="form-control"> </div>
+                </div>
+                <div id="emailGroup" class="form-group">
+                    <label id="emailLabel" class="col-sm-2 control-label" for="textinput">Email</label>
+                    <div class="col-sm-10">
+                        <input id="email" type="text" placeholder="Correo electrónico" class="form-control"> </div>
+                </div>
+                <div id="telefonoGroup" class="form-group">
+                    <label id="telefonoLabel" class="col-sm-2 control-label" for="textinput">Teléfono</label>
+                    <div class="col-sm-10">
+                        <input id="telefono" type="text" placeholder="Teléfono" class="form-control"> </div>
+                </div>
+                <div id="loginGroup" class="form-group">
+                    <label id="loginLabel" class="col-sm-2 control-label" for="textinput">Login</label>
+                    <div class="col-sm-10">
+                        <input id="login" type="text" placeholder="Login" class="form-control"> </div>
+                </div>
+                <div id="pwdGroup" class="form-group">
+                    <label id="pwdLabel" class="col-sm-2 control-label" for="textinput">Contraseña</label>
+                    <div class="col-sm-10">
+                        <input id="pwd" type="password" placeholder="Contraseña" class="form-control"> </div>
+                    <label id="pwd2Label" class="col-sm-2 control-label" for="textinput"></label>
+                    <div class="col-sm-10">
+                        <input id="pwd2" type="password" placeholder="Repetir contraseña" class="form-control"> </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div>
+                            <button id="enviar" type="submit" class="btn btn-primary pull-right">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <h2 class="text-center">¿Cómo funciona?</h2>
+    <div class="col-md-12 well">
+        <p> Utilizando de ejemplo el campo <strong>Nombre</strong>, al enviar el formulario comprobamos que los campos no estén vacios y si lo están añadimos un texto al lado del campo a modo de aviso y añadimos la clase <span class="text-danger">"has-error"</span> para que se muestre de color rojo. </p>
+        <p> De la misma manera procedemos a comprobar el contenido del campo comparandolo con la <strong>expresión regular</strong> <strong>/^[A-Za-z ]+$/</strong>. Si el contenido del campo es correcto añadimos la clase <span class="text-success">"has-success"</span> que mostraría el campo de color verde. </p>
+        <p> Con el resto de campos hacemos unas comprobaciones similares utilizando las clases descritas y expresiones regulares. </p> <pre><code class="js">
+//Comprobamos si el campo está vacio                
+if (nombre == "") { 
+    $('#nombre').after('<span class="text-danger"> Introduce tu nombre </span>');
+    $('#nombreGroup').addClass("has-error");
+}
+//Comprobamos si valida o no al compara con una expresión regular
+else if (!nameReg.test(nombre)) { 
+    $('#nombre').after('<span class="text-danger"> Solo letras</span>');
+    $('#nombreGroup').addClass("has-error");
+}
+else if (nameReg.test(nombre)) {
+    $('#nombreGroup').removeClass("has-error");
+    $('#nombreGroup').addClass("has-success");
+}
+            </code></pre> </div>
+</div>
+<link rel="stylesheet" href="css/atelier.css">
+<script src="js/highlight.pack.js"></script>
+<script src="js/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('pre code').each(function (i, block) {
+            hljs.highlightBlock(block);
+        });
+        $('#enviar').click(function (e) {
+            //Evitamos que se envíe
+            e.preventDefault();
+            //Validamos
+            validateForm();
+        });
+
+        function validateForm() {
+            //Exp Reg 
+            var nameReg = /^[A-Za-z ]+$/;
+            var numberReg = /^[0-9]+$/;
+            var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+            var nombre = $('#nombre').val();
+            var apellidos = $('#apellidos').val();
+            var email = $('#email').val();
+            var telefono = $('#telefono').val();
+            var login = $('#login').val();
+            var pwd = $('#pwd').val();
+            var pwd2 = $('#pwd2').val();
+            var inputVal = new Array(nombre, apellidos, email, telefono, login, pwd, pwd2);
+            var inputMessage = new Array("nombre", "apellidos", "email", "telefono", "login", "paswword");
+            //Ocultamos los span text-danger
+            $('.text-danger').hide();
+            //Nombre
+            if (nombre == "") {
+                $('#nombre').after('<span class="text-danger"> Introduce tu nombre </span>');
+                $('#nombreGroup').addClass("has-error");
+            }
+            else if (!nameReg.test(nombre)) {
+                $('#nombre').after('<span class="text-danger"> Solo letras</span>');
+                $('#nombreGroup').addClass("has-error");
+            }
+            else if (nameReg.test(nombre)) {
+                $('#nombreGroup').removeClass("has-error");
+                $('#nombreGroup').addClass("has-success");
+            }
+            //Apellidos
+            if (apellidos == "") {
+                $('#apellidos').after('<span class="text-danger"> Introduce tus apellidos</span>');
+                $('#apellidosGroup').addClass("has-error");
+            }
+            else if (!nameReg.test(apellidos)) {
+                $('#apellidos').after('<span class="text-danger"> Solo letras</span>');
+                $('#apellidosGroup').addClass("has-error");
+            }
+            else if (nameReg.test(apellidos)) {
+                $('#apellidosGroup').removeClass("has-error");
+                $('#apellidosGroup').addClass("has-success");
+            }
+            //Email
+            if (email == "") {
+                $('#email').after('<span class="text-danger"> Introduce tu email</span>');
+                $('#emailGroup').addClass("has-error");
+            }
+            else if (!emailReg.test(email)) {
+                $('#email').after('<span class="text-danger"> Introduce una dirección de correo válida</span>');
+                $('#emailGroup').addClass("has-error");
+            }
+            else if (emailReg.test(email)) {
+                $('#emailGroup').removeClass("has-error");
+                $('#emailGroup').addClass("has-success");
+            }
+            //Teléfono
+            if (telefono == "") {
+                $('#telefono').after('<span class="text-danger"> Introduce tu teléfono</span>');
+                $('#telefonoGroup').addClass("has-error");
+            }
+            else if (!numberReg.test(telefono)) {
+                $('#telefono').after('<span class="text-danger"> Únicamente números</span>');
+                $('#telefonoGroup').addClass("has-error");
+            }
+            else if (numberReg.test(telefono)) {
+                $('#telefonoGroup').removeClass("has-error");
+                $('#telefonoGroup').addClass("has-success");
+            }
+            //Login
+            if (login == "") {
+                $('#login').after('<span class="text-danger"> Introduce tu login</span>');
+                $('#loginGroup').addClass("has-error");
+            }
+            else if (!nameReg.test(login)) {
+                $('#login').after('<span class="text-danger"> Únicamente números</span>');
+                $('#loginGroup').addClass("has-error");
+            }
+            else if (nameReg.test(login)) {
+                $('#loginGroup').removeClass("has-error");
+                $('#loginGroup').addClass("has-success");
+            }
+            //Passwords
+            if (pwd == "" || pwd2 == "") {
+                $('#pwd2').after('<span class="text-danger"> Introduce ambas contraseñas</span>');
+                $('#pwdGroup').addClass("has-error");
+            }
+            else if (!nameReg.test(pwd) || !nameReg.test(pwd2)) {
+                $('#pwd2').after('<span class="text-danger"> Únicamente letras</span>');
+                $('#pwdGroup').addClass("has-error");
+            }
+            else if (pwd !== pwd2) {
+                $('#pwd2').after('<span class="text-danger"> No coinciden ambas contraseñas</span>');
+                $('#pwdGroup').addClass("has-error");
+            }
+            else if (nameReg.test(pwd) && nameReg.test(pwd2) && (pwd == pwd2)) {
+                $('#pwdGroup').removeClass("has-error");
+                $('#pwdGroup').addClass("has-success");
+            }
+        }
+    });
+</script>
+</body>
+
+</html>

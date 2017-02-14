@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+    <link href="css/jquery-ui.min.css" rel="stylesheet"> </head>
+
+<body>
+    <!-- Migas de pan -->
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li> Inicio <span class="divider"></span> </li>
+                <li class="active"> Efectos custom </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center">Efectos custom</h2>
+                <div>
+                    <div id="efecto_animate" class="panel panel-primary">
+                        <div class="panel-heading text-center">.animate() </div>
+                        <div class="panel-body"> <strong>.animate( propiedades [, duracion ] [, easing ] [, callback ] );</strong></br>
+                            <hr> <strong>propiedades</strong></br> Objeto de propiedades CSS a utilizar para la animación.
+                            <hr> <strong>duracion (default: 400)</strong></br> Número en milisegundos 200 a 600 o cadena "slow", "fast".
+                            <hr> <strong>easing (default: swing)</strong></br>Cadena que indica la funcion easing a utilizar para la transición.
+                            <hr> <strong>callback:</strong></br> Función a llamar una vez la animación ha sido completada.
+                            <hr> </div>
+                        <div class="panel-heading text-center">.delay() </div>
+                        <div class="panel-body"> <strong>.delay( duracion [, nombreCola ] )</strong></br>
+                            <hr> <strong>duracion (default: 400)</strong></br> Número en milisegundos 200 a 600 o cadena "slow", "fast".
+                            <hr> <strong>nombreCola:</strong></br> Especifica el nombre de la cola. Por defecto es fx.
+                            <hr> </div>
+                    </div>
+                </div>
+                <div class="text-center" style="padding:15px;">
+                    <button id="animar" type="button" class="btn btn-primary">animate() y delay()</button>
+                </div>
+                <h2 class="text-center">¿Cómo funciona?</h2>
+                <div class="col-md-12 well">
+                    <p> En este ejemplo tenemos el <strong>div</strong> con <strong>id</strong> <strong>"efecto_animate"</strong>.</br> Al hacer click en el botón con <strong>id</strong> <strong>"animar"</strong> hacemos que se ejecuten la función asociada a los evento <strong>click</strong> para animar el <strong>div</strong>.</br>La animación consiste en en aplicar una pequeña transparencia <strong>opacity: 0.2</strong> y hacer un poco mas ancho el borde <strong>borderWidth: "5px"</strong>.</br>Para el efecto <strong>.delay()</strong> que retrasa la ejecución de la función que le indiquemos, hacemos que pasado 1 segundo vuelva a realizar otra animación que devuelva al <strong>div</strong> a su estado original. </p> <pre><code class="js">
+$("#animar").click(function () {
+   //Animamos el div con .animate() y con .delay() pasado un segundo lo volvemos a animar para que vuelva a su estado original
+    $("#efecto_animate").animate({opacity: 0.2,borderWidth: "5px"}, 1500).delay(1000).animate({opacity: 1,borderWidth: "1px"}, 1500);
+});
+        </code></pre> </div>
+            </div>
+        </div>
+        <link rel="stylesheet" href="css/atelier.css">
+        <script src="js/highlight.pack.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#animar").click(function () {
+                    $("#efecto_animate").animate({
+                        opacity: 0.2
+                        , borderWidth: "5px"
+                    }, 1500).delay(1000).animate({
+                        opacity: 1
+                        , borderWidth: "1px"
+                    }, 1500);
+                });
+                $('pre code').each(function (i, block) {
+                    hljs.highlightBlock(block);
+                });
+            });
+        </script>
+</body>
+
+</html>

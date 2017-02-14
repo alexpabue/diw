@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+</head>
+
+<body>
+    <!-- Migas de pan -->
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li> Inicio <span class="divider"></span> </li>
+                <li class="active"> Efectos básicos </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">Efectos básicos</h2>
+            <div>
+                <div id="efecto_basico" class="panel panel-primary" style="display:none">
+                    <div class="panel-heading text-center">.show(), hide() </div>
+                    <div class="panel-body"> <strong>.show( duracion [, easing ] [, callback ] );</strong></br> <strong>.hide( duracion [, easing ] [, callback ] );</strong>
+                        <hr> <strong>duracion (default: 400)</strong></br> Número en milisegundos 200 a 600 o cadena "slow", "fast".
+                        <hr> <strong>easing (default: swing)</strong></br>Cadena que indica la funcion easing a utilizar para la transición.
+                        <hr> <strong>callback:</strong></br> Función a llamar una vez la animación ha sido completada.
+                        <hr>
+                        <div class="alert alert-info" role="alert">Si no se indican parámetros el método se ejecuta en su forma mas sencilla:</br> <strong>$( ".clase" ).show(); </strong></br><strong>$( ".clase" ).hide(); </strong> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center" style="padding:15px;">
+                <button id="show" type="button" class="btn btn-primary">Ver panel</button>
+                <button id="hide" type="button" class="btn btn-danger">Ocultar panel</button>
+            </div>
+            <h2 class="text-center">¿Cómo funciona?</h2>
+            <div class="col-md-12 well">
+                <p> En este ejemplo tenemos el <strong>div</strong> con <strong>id</strong> <strong>"efecto_basico"</strong> oculto.</br> Al hacer click en los botones con <strong>id</strong> <strong>"show"</strong> para mostrar y <strong>"hide"</strong> para ocultar hacemos que se ejecuten las funciones asociadas a los eventos <strong>click</strong> de esos botones.</br>Para indicar la velocidad de la animación le pasamos la cadena <strong>"slow"</strong> para conseguir una animación lenta. </p> <pre><code class="js">
+$("#show").click(function () {
+    $("#efecto_basico").show("slow");
+});
+$("#hide").click(function () {
+    $("#efecto_basico").hide("slow");
+});  
+        </code></pre> </div>
+        </div>
+    </div>
+    <link rel="stylesheet" href="css/atelier.css">
+    <script src="js/highlight.pack.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#show").click(function () {
+                $("#efecto_basico").show("slow");
+            });
+            $("#hide").click(function () {
+                $("#efecto_basico").hide("slow");
+            });
+            $('pre code').each(function (i, block) {
+                hljs.highlightBlock(block);
+            });
+        });
+    </script>
+</body>
+
+</html>

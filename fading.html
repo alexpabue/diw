@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+</head>
+
+<body>
+    <!-- Migas de pan -->
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li> Inicio <span class="divider"></span> </li>
+                <li class="active"> Efectos fadding </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">Efectos fading</h2>
+            <div>
+                <div id="efecto_fading" class="panel panel-primary" style="display:none">
+                    <div class="panel-heading text-center">.fadeIn(), fadeOut(), fadeToggle() </div>
+                    <div class="panel-body"> <strong>.fadeIn( duracion [, easing ] [, callback ] );</strong></br> <strong>.fadeOut( duracion [, easing ] [, callback ] );</strong></br> <strong>.fadeToggle( duracion [, easing ] [, callback ] );</strong>
+                        <hr> <strong>duracion (default: 400)</strong></br> Número en milisegundos 200 a 600 o cadena "slow", "fast".
+                        <hr> <strong>easing (default: swing)</strong></br>Cadena que indica la funcion easing a utilizar para la transición.
+                        <hr> <strong>callback:</strong></br> Función a llamar una vez la animación ha sido completada. </div>
+                </div>
+            </div>
+            <div class="text-center" style="padding:15px;">
+                <button id="in" type="button" class="btn btn-primary">fadeIn</button>
+                <button id="out" type="button" class="btn btn-danger">fadeOut</button>
+                <button id="toggle" type="button" class="btn btn-default">fadeToggle</button>
+            </div>
+            <h2 class="text-center">¿Cómo funciona?</h2>
+            <div class="col-md-12 well">
+                <p> En este ejemplo tenemos el <strong>div</strong> con <strong>id</strong> <strong>"efecto_fading"</strong> oculto.</br> Al hacer click en los botones con <strong>id</strong> <strong>"in"</strong> y <strong>"out"</strong> hacemos que se ejecuten las funciones asociadas a los eventos <strong>click</strong> para que aparezca y desaparezca el <strong>div</strong>.</br>Con el botón de <strong>id</strong> <strong>"toggle"</strong> hacemos que alternen ambos efectos. Para indicar la velocidad de la animación le pasamos la cadena <strong>"slow"</strong> para conseguir una animación lenta, y, en el caso de <strong>toggle</strong> le pasamos el entero 3000 para que la animación tarde 3 segundos y sea aún mas lenta y sueve. </p> <pre><code class="js">
+$("#toggle").click(function () {
+   //3 segundos de duración
+    $("#efecto_fading").fadeToggle(3000);
+}); 
+$("#in").click(function () {
+    $("#efecto_fading").fadeIn("slow");
+});
+$("#out").click(function () {
+    $("#efecto_fading").fadeOut("slow");
+}); 
+        </code></pre> </div>
+        </div>
+    </div>
+    <link rel="stylesheet" href="css/atelier.css">
+    <script src="js/highlight.pack.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#toggle").click(function () {
+                $("#efecto_fading").fadeToggle(3000);
+            });
+            $("#in").click(function () {
+                $("#efecto_fading").fadeIn("slow");
+            });
+            $("#out").click(function () {
+                $("#efecto_fading").fadeOut("slow");
+            });
+            $('pre code').each(function (i, block) {
+                hljs.highlightBlock(block);
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+    <link href="css/jquery-ui.min.css" rel="stylesheet"> </head>
+
+<body>
+    <!-- Migas de pan -->
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li> Inicio <span class="divider"></span> </li>
+                <li class="active"> Efectos sliding </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">Efectos sliding</h2>
+            <div>
+                <div id="efecto_sliding" class="panel panel-primary">
+                    <div class="panel-heading text-center">.slideUp(), slideDown(), slideToggle() </div>
+                    <div class="panel-body"> <strong>.slideUp( duracion [, easing ] [, callback ] );</strong></br> <strong>.slideDown( duracion [, easing ] [, callback ] );</strong></br> <strong>.slideToggle( duracion [, easing ] [, callback ] );</strong>
+                        <hr> <strong>duracion (default: 400)</strong></br> Número en milisegundos 200 a 600 o cadena "slow", "fast".
+                        <hr> <strong>easing (default: swing)</strong></br>Cadena que indica la funcion easing a utilizar para la transición.
+                        <hr> <strong>callback:</strong></br> Función a llamar una vez la animación ha sido completada. </div>
+                </div>
+            </div>
+            <div class="text-center" style="padding:15px;">
+                <button id="up" type="button" class="btn btn-primary">slideUp</button>
+                <button id="down" type="button" class="btn btn-danger">slideDown</button>
+                <button id="toggle" type="button" class="btn btn-default">slideToggle</button>
+            </div>
+            <h2 class="text-center">¿Cómo funciona?</h2>
+            <div class="col-md-12 well">
+                <p> En este ejemplo tenemos el <strong>div</strong> con <strong>id</strong> <strong>"efecto_sliding"</strong> oculto.</br> Al hacer click en los botones con <strong>id</strong> <strong>"up"</strong> y <strong>"down"</strong> hacemos que se ejecuten las funciones asociadas a los eventos <strong>click</strong> para que aparezca y desaparezca el <strong>div</strong>.</br>Con el botón de <strong>id</strong> <strong>"toggle"</strong> hacemos que alternen ambos efectos. Para indicar la velocidad de las animaciones le pasamos la cadena <strong>"slow"</strong> o el entero 3000 para conseguir una animación lenta, y, en el caso de <strong>"down"</strong> le pasamos el entero 5000 para que la animación tarde 5 segundos y además le pasamos <strong>"easeOutElastic"</strong> como efecto <strong>easing</strong> de la librería <a href="https://jqueryui.com/" target="_blank">jQuery UI</a> consiguiendo un efecto similar al de un rebote. </p> <pre><code class="js">
+$("#toggle").click(function () {
+    $("#efecto_sliding").slideToggle(3000);
+}); 
+$("#up").click(function () {
+    $("#efecto_sliding").slideUp("slow");
+});
+$("#down").click(function () {
+    $("#efecto_sliding").slideDown(5000, "easeOutElastic");
+});
+        </code></pre> </div>
+        </div>
+    </div>
+    <link rel="stylesheet" href="css/atelier.css">
+    <script src="js/highlight.pack.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#toggle").click(function () {
+                $("#efecto_sliding").slideToggle(3000);
+            });
+            $("#up").click(function () {
+                $("#efecto_sliding").slideUp("slow");
+            });
+            $("#down").click(function () {
+                $("#efecto_sliding").slideDown(5000, "easeOutElastic");
+            });
+            $('pre code').each(function (i, block) {
+                hljs.highlightBlock(block);
+            });
+        });
+    </script>
+</body>
+
+</html>

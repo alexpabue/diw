@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tutorial JQuery</title>
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet"> </head>
+<!-- Cuerpo -->
+
+<body>
+    <!-- Cabecera -->
+    <div class="jumbotron text-center"> <img src="img/jquery_logo.png" class="img-fluid" alt="Logo de JQuery"> </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Menú de navegación -->
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </button> <span class="navbar-brand">JQuery</span> </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class="active"> <a href="inicio.html" class="enlace">Inicio</a> </li>
+                            <li> <a href="multimedia.html" class="enlace">Multimedia</a> </li>
+                            <li> <a href="formularios.html" class="enlace">Formularios</a> </li>
+                            <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Efectos<strong class="caret"></strong></a>
+                                <ul class="dropdown-menu">
+                                    <li> <a href="basicos.html" class="enlace">Básicos</a> </li>
+                                    <li> <a href="fading.html" class="enlace">Fading</a> </li>
+                                    <li> <a href="sliding.html" class="enlace">Sliding</a> </li>
+                                    <li class="divider"> </li>
+                                    <li> <a href="custom.html" class="enlace">Custom</a> </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- Contenido -->
+        <div id="contenido"> </div>
+    </div>
+    <!-- Pie -->
+    <div class="container-fluid">
+        <footer class="footer">
+            <div class="text-center center-block">
+                <br/> <a href="#"><i class="fa fa-facebook-square fa-3x social"></i></a> <a href="#"><i class="fa fa-twitter-square fa-3x social"></i></a> <a href="#"><i class="fa fa-google-plus-square fa-3x social"></i></a> <a href="#"><i class="fa fa-envelope-square fa-3x social"></i></a>
+                <br/> </div>
+    </div>
+    </footer>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script type="text/javascript">
+        //Al iniciar la página carga el html del contenido multimedia
+        $("#contenido").load('inicio.html');
+        $(".enlace").click(function (event) {
+            //Que no vaya al html
+            event.preventDefault();
+            var value = $(this).attr("href");
+            //Quitamos la clase active del li actual
+            $('li.active').removeClass('active');
+            //Añadimos el active al li del enlace
+            $(this).parent().addClass('active');
+            //alert(value);
+            //Cargamos en contenido el HTML
+            $("#contenido").load(value);
+        });
+    </script>
+</body>
+
+</html>

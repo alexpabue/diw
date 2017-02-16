@@ -1,16 +1,43 @@
+
+/* Fondo azul */
 .jumbotron{
     background: #0769ad;
 }
 
+/* Redondeado del borde */
+.navbar{
+        border-radius: 25px;
+}
+
+/* Cambio en el separador*/
+.breadcrumb > li + li:before {
+    color: #ccc;
+    content: "-> ";
+    padding: 0 5px;
+}
+
+/* Color de texto biege */
+.panel-heading{
+    color: beige !important;
+}
+
+/* Elimina redondeo y añade borde */
+.btn-default{
+    border: 1px solid black !important;
+    -webkit-border-radius: 0 !important;
+     -moz-border-radius: 0 !important;
+          border-radius: 0 !important;
+}
+
+/* Estilos botones sociales */
 .social:hover {
      -webkit-transform: scale(1.1);
      -moz-transform: scale(1.1);
      -o-transform: scale(1.1);
  }
+
  .social {
      -webkit-transform: scale(0.8);
-     /* Browser Variations: */
-     
      -moz-transform: scale(0.8);
      -o-transform: scale(0.8);
      -webkit-transition-duration: 0.5s;
